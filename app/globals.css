@@ -9,7 +9,7 @@
   }
 
   body {
-    @apply min-h-screen bg-stone-50 text-zinc-950 antialiased;
+    @apply min-h-screen bg-stone-50 text-zinc-950 antialiased font-sans leading-[1.55];
   }
 
   a {
