@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px; /* sticky nav offset */
+  }
+
+  body {
+    @apply min-h-screen bg-zinc-50 text-zinc-950 antialiased;
+  }
+
+  a {
+    @apply text-inherit;
+  }
+
+  ::selection {
+    background: rgba(24, 24, 27, 0.12);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+

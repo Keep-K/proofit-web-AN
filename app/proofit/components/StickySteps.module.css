@@ -1,0 +1,75 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.stickyColumn {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+}
+
+.stepList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stepItem {
+  display: block;
+}
+
+.stepButton {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  width: 100%;
+  text-align: left;
+  border: 1px solid #e0e0e0;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: opacity 0.2s ease;
+}
+
+.stepButton:hover {
+  opacity: 0.7;
+}
+
+.stepButton.active {
+  border-color: #333;
+  background-color: #f5f5f5;
+}
+
+.stepNumber {
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  letter-spacing: 0.05em;
+}
+
+.stepTitle {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.4;
+}
+
+.contentColumn {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .stickyColumn {
+    position: static;
+  }
+}
+

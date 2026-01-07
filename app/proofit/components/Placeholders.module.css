@@ -1,0 +1,41 @@
+.heroPlaceholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.stepPlaceholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  min-height: 400px;
+}
+
+.defaultPlaceholder {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 40px;
+}
+
+.label {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  font-family: monospace;
+}
+

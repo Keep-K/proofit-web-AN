@@ -1,0 +1,33 @@
+import React from 'react'
+
+type PlaceholderProps = {
+  label: string
+  className?: string
+  minHeightClassName?: string
+}
+
+export function Placeholder({
+  label,
+  className,
+  minHeightClassName,
+}: PlaceholderProps) {
+  return (
+    <div
+      role="img"
+      aria-label={label}
+      className={[
+        'relative w-full rounded-xl border border-dashed border-zinc-300 bg-white/60',
+        'text-[11px] font-medium tracking-[0.14em] text-zinc-500',
+        'shadow-sm',
+        'flex items-center justify-center',
+        'select-none',
+        minHeightClassName ?? 'min-h-[180px]',
+        className ?? '',
+      ].join(' ')}
+    >
+      <span className="px-4 text-center uppercase">{label}</span>
+    </div>
+  )
+}
+
+
