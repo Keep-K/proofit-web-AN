@@ -21,6 +21,8 @@
     scroll-behavior: smooth;
     scroll-padding-top: 88px; /* sticky nav offset */
     color-scheme: light; /* Light theme */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
@@ -29,10 +31,30 @@
 
   a {
     @apply text-inherit;
+    @apply transition-colors;
   }
 
   ::selection {
     background: rgb(var(--accent) / 0.16);
+    color: rgb(var(--text));
+  }
+
+  /* Focus visible improvements */
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent) / 0.5);
+    outline-offset: 2px;
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 

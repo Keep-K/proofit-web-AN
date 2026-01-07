@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -8,17 +8,66 @@ export const metadata: Metadata = {
   },
   description:
     'A verification-first system where health performance is measured with integrity and retained as trusted progress.',
-  metadataBase: new URL('http://localhost:3000'),
+  keywords: [
+    'health performance',
+    'verification',
+    'integrity',
+    'fitness tracking',
+    'verified execution',
+    'performance measurement',
+  ],
+  authors: [{ name: 'PROOFIT' }],
+  creator: 'PROOFIT',
+  publisher: 'PROOFIT',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://proofit-web.web.app'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'PROOFIT',
+    title: 'PROOFIT — Verified performance that accumulates',
     description:
       'Move from disappearing results to verified performance that accumulates.',
+    url: '/',
+    siteName: 'PROOFIT',
     type: 'website',
+    locale: 'ko_KR',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'PROOFIT — Verified performance that accumulates',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'PROOFIT — Verified performance that accumulates',
+    description:
+      'Move from disappearing results to verified performance that accumulates.',
+    images: ['/og-image.jpg'],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 }
 
 export default function RootLayout({

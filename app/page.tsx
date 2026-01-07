@@ -24,7 +24,7 @@ export default function Home() {
 
       <Nav />
 
-      <main id="main">
+      <main id="main" className="focus:outline-none">
         <Hero />
         <SocialProof />
         <Problem />

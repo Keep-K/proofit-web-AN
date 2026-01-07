@@ -5,6 +5,13 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Performance optimizations
+  compress: true,
+  poweredByHeader: false,
+  // Experimental features for better performance
+  experimental: {
+    optimizePackageImports: ['@/components', '@/lib'],
+  },
 }
 
 module.exports = nextConfig
