@@ -1,8 +1,8 @@
  'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { LANDING_COPY, NAV_LINKS, WHITEPAPER_URL } from '@/lib/landing/content'
-import { Placeholder } from '@/components/landing/Placeholder'
 import { useEffect, useId, useState } from 'react'
 
 export function Nav() {
@@ -41,11 +41,13 @@ export function Nav() {
           className="group inline-flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
           aria-label="PROOFIT Home"
         >
-          <Placeholder
-            label="LOGO"
-            className="h-9 w-9 shrink-0 rounded-lg"
-            minHeightClassName="min-h-0"
-            hideLabel={true}
+          <Image
+            src="/logo.png"
+            alt="PROOFIT"
+            width={36}
+            height={36}
+            className="h-9 w-9 shrink-0 rounded-lg object-contain"
+            priority
           />
           <span className="text-sm font-semibold tracking-wide text-text">
             {LANDING_COPY.nav.brand}

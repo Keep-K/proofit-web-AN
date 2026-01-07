@@ -1,5 +1,5 @@
+import Image from 'next/image'
 import { LANDING_COPY, SECTION_IDS } from '@/lib/landing/content'
-import { Placeholder } from '@/components/landing/Placeholder'
 import { Section } from '@/components/landing/Section'
 
 function IntegrityChecklist() {
@@ -29,11 +29,15 @@ export function Integrity() {
       <div className="grid grid-cols-12 gap-6 items-start">
         <div className="col-span-12 lg:col-span-6">
           <div className="rounded-2xl border border-border bg-surface/60 p-6">
-            <Placeholder
-              label={LANDING_COPY.integrity.diagramSlotLabel}
-              minHeightClassName="min-h-[260px] sm:min-h-[320px]"
-              subtle={true}
-            />
+            <div className="relative min-h-[260px] sm:min-h-[320px] w-full rounded-xl overflow-hidden bg-surface-2">
+              <Image
+                src="/images/integrity-diagram.png"
+                alt="Integrity verification process diagram"
+                fill
+                className="object-contain"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
           </div>
         </div>
 

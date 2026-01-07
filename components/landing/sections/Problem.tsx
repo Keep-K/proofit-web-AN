@@ -1,5 +1,5 @@
+import Image from 'next/image'
 import { LANDING_COPY, SECTION_IDS } from '@/lib/landing/content'
-import { Placeholder } from '@/components/landing/Placeholder'
 import { Section } from '@/components/landing/Section'
 
 export function Problem() {
@@ -14,11 +14,15 @@ export function Problem() {
       <div className="grid grid-cols-12 gap-6 items-start">
         <div className="col-span-12 lg:col-span-4">
           <div className="rounded-2xl border border-border bg-surface/60 p-6">
-            <Placeholder
-              label={LANDING_COPY.problem.illustrationSlotLabel}
-              minHeightClassName="min-h-[220px] lg:min-h-[280px]"
-              subtle={true}
-            />
+            <div className="relative min-h-[220px] lg:min-h-[280px] w-full rounded-xl overflow-hidden">
+              <Image
+                src="/images/problem-illustration.png"
+                alt="Problem illustration: disappearing health performance data"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 33vw"
+              />
+            </div>
             <p className="mt-4 text-sm leading-relaxed text-muted">
               Existing platforms optimize for <span className="text-text font-medium">engagement</span>, not{' '}
               <span className="text-text font-medium">verified execution</span>.

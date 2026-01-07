@@ -12,8 +12,8 @@
   --muted: 95 99 104; /* #5F6368 - warm gray for secondary text */
   --muted-2: 128 128 128; /* #808080 - deeper gray */
   --border: 230 228 220; /* #E6E4DC - warm subtle border */
-  --accent: 199 110 0; /* #C76E00 - deep burnt orange */
-  --accent-2: 224 138 30; /* #E08A1E - hover accent */
+  --accent: 255 149 0; /* #FF9500 - bright vibrant orange */
+  --accent-2: 255 184 77; /* #FFB84D - lighter orange for hover */
 }
 
 @layer base {

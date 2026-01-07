@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     locale: 'ko_KR',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'PROOFIT — Verified performance that accumulates',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: 'PROOFIT — Verified performance that accumulates',
     description:
       'Move from disappearing results to verified performance that accumulates.',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
