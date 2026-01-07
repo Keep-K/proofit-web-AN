@@ -1,12 +1,12 @@
 import React from 'react'
 
 type StepperItem = {
-  title: string
-  text?: string
+  readonly title: string
+  readonly text?: string
 }
 
 type StepperProps = {
-  items: StepperItem[]
+  items: readonly StepperItem[]
   variant?: 'default' | 'gated'
   className?: string
 }
