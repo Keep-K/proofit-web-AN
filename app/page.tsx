@@ -14,17 +14,17 @@ import { Footer } from '@/components/landing/sections/Footer'
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-stone-50 text-zinc-950">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-6 focus:top-6 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-zinc-900 focus:shadow-lg"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-6 focus:top-6 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-zinc-900 focus:ring-2 focus:ring-zinc-900/15"
       >
         본문으로 건너뛰기
       </a>
 
       <Nav />
 
-      <main id="main" className="bg-zinc-50">
+      <main id="main" className="bg-stone-50">
         <Hero />
         <SocialProof />
         <Problem />

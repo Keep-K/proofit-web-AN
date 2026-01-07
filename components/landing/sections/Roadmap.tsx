@@ -11,16 +11,16 @@ export function Roadmap() {
     >
       <div className="grid grid-cols-12 gap-6 items-start">
         <div className="col-span-12 lg:col-span-8">
-          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
-            <ol className="relative space-y-6 border-l border-zinc-200 pl-6">
+          <div className="rounded-2xl border border-stone-200 bg-white/60 p-6">
+            <ol className="relative space-y-6 border-l border-stone-200 pl-6">
               {LANDING_COPY.roadmap.phases.map((p) => (
                 <li key={p.title} className="relative">
                   <span
                     aria-hidden="true"
-                    className="absolute -left-[9px] top-1 h-4 w-4 rounded-full border border-zinc-200 bg-white shadow-sm"
+                    className="absolute -left-[9px] top-1 h-4 w-4 rounded-full border border-stone-200 bg-white"
                   />
-                  <h3 className="text-base font-semibold text-zinc-950">{p.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-zinc-600">{p.text}</p>
+                  <h3 className="text-base font-medium text-zinc-950">{p.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-stone-600">{p.text}</p>
                 </li>
               ))}
             </ol>
@@ -28,11 +28,11 @@ export function Roadmap() {
         </div>
 
         <div className="col-span-12 lg:col-span-4 space-y-4">
-          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
-            <p className="text-sm font-semibold text-zinc-950">{LANDING_COPY.roadmap.safetyTitle}</p>
+          <div className="rounded-2xl border border-stone-200 bg-white/60 p-6">
+            <p className="text-sm font-medium text-zinc-950">{LANDING_COPY.roadmap.safetyTitle}</p>
             <ul className="mt-4 space-y-2">
               {LANDING_COPY.roadmap.safety.map((s) => (
-                <li key={s} className="flex items-start gap-3 text-sm text-zinc-700">
+                <li key={s} className="flex items-start gap-3 text-sm text-stone-700">
                   <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-zinc-950/60" />
                   <span className="leading-relaxed">{s}</span>
                 </li>
@@ -40,11 +40,11 @@ export function Roadmap() {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">
+          <div className="rounded-2xl border border-stone-200 bg-stone-50 p-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-500">
               Rollout principle
             </p>
-            <p className="mt-2 text-sm text-zinc-700">
+            <p className="mt-2 text-sm text-stone-700">
               Ship gates first. Expand only when trust signals stay stable.
             </p>
           </div>
@@ -53,5 +53,6 @@ export function Roadmap() {
     </Section>
   )
 }
+
 
 

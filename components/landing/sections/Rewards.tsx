@@ -3,20 +3,20 @@ import { Section } from '@/components/landing/Section'
 
 function GatedLogic() {
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
+    <div className="rounded-2xl border border-stone-200 bg-white/60 p-6">
       <div className="flex items-center justify-between gap-4">
-        <p className="text-sm font-semibold text-zinc-950">{LANDING_COPY.rewards.gatedTitle}</p>
-        <p className="text-xs text-zinc-500">Integrity-gated progression</p>
+        <p className="text-sm font-medium text-zinc-950">{LANDING_COPY.rewards.gatedTitle}</p>
+        <p className="text-xs text-stone-500">Integrity-gated progression</p>
       </div>
 
       <ol className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-4">
         {LANDING_COPY.rewards.gates.map((g, idx) => (
-          <li key={g} className="relative rounded-xl border border-zinc-200 bg-zinc-50 p-4">
+          <li key={g} className="relative rounded-xl border border-stone-200 bg-stone-50 p-4">
             <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-200 bg-white text-sm font-semibold text-zinc-900">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-stone-200 bg-white/70 text-sm font-medium text-zinc-900">
                 {idx + 1}
               </span>
-              <span className="text-sm font-semibold text-zinc-950">{g}</span>
+              <span className="text-sm font-medium text-zinc-950">{g}</span>
             </div>
           </li>
         ))}
@@ -38,16 +38,16 @@ export function Rewards() {
           <GatedLogic />
         </div>
         <div className="col-span-12 lg:col-span-4">
-          <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6 shadow-sm">
-            <p className="text-sm font-semibold text-amber-950">{LANDING_COPY.rewards.warningTitle}</p>
-            <p className="mt-2 text-sm leading-relaxed text-amber-900/80">
+          <div className="rounded-2xl border border-stone-200 bg-white/60 p-6">
+            <p className="text-sm font-medium text-zinc-950">{LANDING_COPY.rewards.warningTitle}</p>
+            <p className="mt-2 text-sm leading-relaxed text-stone-700">
               {LANDING_COPY.rewards.warningText}
             </p>
-            <div className="mt-5 rounded-xl border border-amber-200 bg-white/60 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-800/80">
+            <div className="mt-5 rounded-xl border border-stone-200 bg-stone-50 p-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-500">
                 Design note
               </p>
-              <p className="mt-2 text-sm text-amber-900/80">
+              <p className="mt-2 text-sm text-stone-700">
                 Rewards should validate integrity, not create a shortcut.
               </p>
             </div>
@@ -57,5 +57,6 @@ export function Rewards() {
     </Section>
   )
 }
+
 
 

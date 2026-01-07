@@ -16,9 +16,8 @@ export function Placeholder({
       role="img"
       aria-label={label}
       className={[
-        'relative w-full rounded-xl border border-dashed border-zinc-300 bg-white/60',
-        'text-[11px] font-medium tracking-[0.14em] text-zinc-500',
-        'shadow-sm',
+        'relative w-full rounded-xl border border-dashed border-stone-200 bg-stone-50/60',
+        'text-[11px] font-medium tracking-[0.14em] text-stone-500',
         'flex items-center justify-center',
         'select-none',
         minHeightClassName ?? 'min-h-[180px]',
@@ -29,5 +28,6 @@ export function Placeholder({
     </div>
   )
 }
+
 
 
