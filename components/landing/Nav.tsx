@@ -1,8 +1,25 @@
+ 'use client'
+
 import Link from 'next/link'
 import { LANDING_COPY, NAV_LINKS, WHITEPAPER_URL } from '@/lib/landing/content'
 import { Placeholder } from '@/components/landing/Placeholder'
+import { useEffect, useId, useState } from 'react'
 
 export function Nav() {
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const mobileMenuId = useId()
+
+  useEffect(() => {
+    if (!mobileOpen) return
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileOpen(false)
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [mobileOpen])
+
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-200/70 bg-zinc-50/70 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-4">
@@ -43,35 +60,79 @@ export function Nav() {
             {LANDING_COPY.nav.cta}
           </a>
 
-          <details className="relative md:hidden">
-            <summary className="list-none rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm font-medium text-zinc-900 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/20 cursor-pointer">
-              Menu
-            </summary>
-            <div className="absolute right-0 mt-2 w-[min(86vw,320px)] rounded-xl border border-zinc-200 bg-white p-2 shadow-lg">
-              <div className="flex flex-col">
+          <div className="flex md:hidden">
+            <button
+              type="button"
+              className="inline-flex items-center justify-center rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm font-medium text-zinc-900 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/20"
+              aria-label="메뉴 열기"
+              aria-controls={mobileMenuId}
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((v) => !v)}
+            >
+              <span className="sr-only">메뉴</span>
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                aria-hidden="true"
+                className="text-zinc-900"
+              >
+                {mobileOpen ? (
+                  <path
+                    fill="currentColor"
+                    d="M18.3 5.71a1 1 0 0 0-1.42 0L12 10.59 7.12 5.7A1 1 0 1 0 5.7 7.12L10.59 12 5.7 16.88a1 1 0 1 0 1.42 1.42L12 13.41l4.88 4.89a1 1 0 0 0 1.42-1.42L13.41 12l4.89-4.88a1 1 0 0 0 0-1.41Z"
+                  />
+                ) : (
+                  <path
+                    fill="currentColor"
+                    d="M4 6.5A1.5 1.5 0 0 1 5.5 5h13A1.5 1.5 0 0 1 20 6.5 1.5 1.5 0 0 1 18.5 8h-13A1.5 1.5 0 0 1 4 6.5Zm0 5.5A1.5 1.5 0 0 1 5.5 10.5h13A1.5 1.5 0 0 1 20 12a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 12Zm0 5.5A1.5 1.5 0 0 1 5.5 16h13a1.5 1.5 0 0 1 0 3h-13A1.5 1.5 0 0 1 4 17.5Z"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {mobileOpen ? (
+        <div className="fixed inset-0 z-[60] md:hidden" role="dialog" aria-modal="true">
+          <button
+            type="button"
+            aria-label="메뉴 닫기"
+            className="absolute inset-0 bg-zinc-950/20 backdrop-blur-[2px]"
+            onClick={() => setMobileOpen(false)}
+          />
+          <div
+            id={mobileMenuId}
+            className="absolute right-6 top-[72px] w-[min(86vw,340px)] rounded-xl border border-zinc-200 bg-white p-2 shadow-lg"
+          >
+            <div className="flex flex-col">
+              <a
+                className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm font-medium text-zinc-900 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/20"
+                href={WHITEPAPER_URL}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setMobileOpen(false)}
+              >
+                {LANDING_COPY.nav.cta}
+              </a>
+              <div className="my-2 border-t border-zinc-200/70" />
+              <nav className="flex flex-col" aria-label="Mobile">
                 {NAV_LINKS.map((l) => (
                   <a
                     key={l.id}
                     href={`#${l.id}`}
                     className="rounded-lg px-3 py-2 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/20"
+                    onClick={() => setMobileOpen(false)}
                   >
                     {l.label}
                   </a>
                 ))}
-                <div className="my-2 border-t border-zinc-200/70" />
-                <a
-                  className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm font-medium text-zinc-900 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/20"
-                  href={WHITEPAPER_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {LANDING_COPY.nav.cta}
-                </a>
-              </div>
+              </nav>
             </div>
-          </details>
+          </div>
         </div>
-      </div>
+      ) : null}
     </header>
   )
 }

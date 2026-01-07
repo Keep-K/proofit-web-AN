@@ -10,13 +10,19 @@ export function FAQ() {
             {LANDING_COPY.faq.items.map((item) => (
               <details
                 key={item.q}
-                className="group rounded-xl border border-transparent p-4 transition hover:border-zinc-200 hover:bg-zinc-50"
+                className="group rounded-xl border border-transparent p-4 transition hover:border-zinc-200 hover:bg-zinc-50 focus-within:border-zinc-200 focus-within:bg-zinc-50"
               >
-                <summary className="cursor-pointer list-none text-sm font-semibold text-zinc-950 focus:outline-none">
-                  <div className="flex items-center justify-between gap-4">
-                    <span>{item.q}</span>
-                    <span className="text-zinc-500 transition group-open:rotate-45">+</span>
-                  </div>
+                <summary
+                  className={[
+                    'cursor-pointer list-none text-sm font-semibold text-zinc-950 focus:outline-none',
+                    'flex items-center justify-between gap-4',
+                    "after:content-['+'] after:text-zinc-500 after:transition",
+                    "group-open:after:content-['–']",
+                    'focus-visible:ring-2 focus-visible:ring-zinc-900/20 rounded-lg px-1 py-1',
+                    '[&::-webkit-details-marker]:hidden',
+                  ].join(' ')}
+                >
+                  <span className="pr-2">{item.q}</span>
                 </summary>
                 <p className="mt-3 text-sm leading-relaxed text-zinc-600">{item.a}</p>
               </details>

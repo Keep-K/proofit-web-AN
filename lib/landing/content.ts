@@ -89,22 +89,30 @@ export const LANDING_COPY = {
     modules: [
       {
         title: 'Body Analysis AI',
-        text: 'Turn raw signals into an actionable body state model.',
+        chips: ['Signals', 'Baseline', 'Model'],
+        micro: 'Ground truth for personalized performance.',
+        text: 'Turn raw signals into a usable body model.',
         slot: 'MODULE VISUAL SLOT',
       },
       {
         title: 'Goal Planning AI',
-        text: 'Translate goals into verifiable, progressive plans.',
+        chips: ['Goals', 'Constraints', 'Plan'],
+        micro: 'Plans that can be verified, not assumed.',
+        text: 'Translate goals into clear, verifiable plans.',
         slot: 'MODULE VISUAL SLOT',
       },
       {
         title: 'Motion Correction AI',
-        text: 'Check form, range, tempo, and consistency in execution.',
+        chips: ['Pose', 'Checks', 'Feedback'],
+        micro: 'Verify execution quality in real time.',
+        text: 'Check form and consistency during execution.',
         slot: 'MODULE VISUAL SLOT',
       },
       {
         title: 'Adaptive Optimization AI',
-        text: 'Continuously adjust based on verified performance signals.',
+        chips: ['Trends', 'Adjust', 'Optimize'],
+        micro: 'Improve the loop from verified outcomes.',
+        text: 'Continuously adjust using verified performance.',
         slot: 'MODULE VISUAL SLOT',
       },
     ],
@@ -142,11 +150,20 @@ export const LANDING_COPY = {
     lead:
       'Kept intentionally abstract. No promises, no numbers — details follow verification maturity.',
     boxes: [
-      { title: 'Utility', text: 'PLACEHOLDER — future utility mechanics' },
-      { title: 'Governance', text: 'PLACEHOLDER — future governance scope' },
-      { title: 'Ecosystem incentives', text: 'PLACEHOLDER — future incentive design' },
+      {
+        title: 'Utility',
+        lines: ['Access to product capabilities (future).', 'Activation gated by verified usage.'],
+      },
+      {
+        title: 'Governance',
+        lines: ['Scope starts narrow and safety-first.', 'Rules evolve with verification maturity.'],
+      },
+      {
+        title: 'Ecosystem incentives',
+        lines: ['Incentives follow integrity signals.', 'Designed to discourage manipulation.'],
+      },
     ],
-    disclaimer: 'Details evolve; see whitepaper.',
+    disclaimer: 'Details evolve; see the whitepaper for the latest.',
   },
   roadmap: {
     title: 'Roadmap & Rollout',

@@ -3,6 +3,7 @@ import { Placeholder } from '@/components/landing/Placeholder'
 import { Section } from '@/components/landing/Section'
 
 export function Problem() {
+  const cardEyebrows = ['01 / BODY MODEL', '02 / EXECUTION', '03 / PERFORMANCE'] as const
   return (
     <Section
       id={SECTION_IDS.problem}
@@ -26,15 +27,17 @@ export function Problem() {
 
         <div className="col-span-12 lg:col-span-8">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {LANDING_COPY.problem.cards.map((c) => (
+            {LANDING_COPY.problem.cards.map((c, idx) => (
               <div
                 key={c.title}
-                className="group rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                className="group flex h-full flex-col rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:min-h-[200px]"
               >
-                <div className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50 text-sm font-semibold text-zinc-900">
-                  •
-                </div>
-                <h3 className="text-base font-semibold text-zinc-950">{c.title}</h3>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">
+                  {cardEyebrows[idx] ?? `${String(idx + 1).padStart(2, '0')} / TOPIC`}
+                </p>
+                <h3 className="mt-3 text-base font-semibold text-zinc-950">
+                  {c.title.replace(/^\s*[•·‣▪-]+\s*/, '')}
+                </h3>
                 <p className="mt-2 text-sm leading-relaxed text-zinc-600">{c.text}</p>
               </div>
             ))}

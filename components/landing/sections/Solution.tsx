@@ -8,13 +8,15 @@ function FlowStepper() {
         <h3 className="text-sm font-semibold text-zinc-950">
           {LANDING_COPY.solution.flowTitle}
         </h3>
-        <p className="text-xs text-zinc-500">Horizontal stepper (no icon libs)</p>
       </div>
 
-      <div className="mt-4 overflow-x-auto">
-        <ol className="min-w-[720px] grid grid-cols-4 gap-4">
+      <div className="mt-4">
+        <ol className="grid gap-3 md:grid-cols-4 md:gap-4">
           {LANDING_COPY.solution.flow.map((s, idx) => (
-            <li key={s.title} className="relative rounded-xl border border-zinc-200 bg-zinc-50 p-4">
+            <li
+              key={s.title}
+              className="relative rounded-xl border border-zinc-200 bg-zinc-50 p-4 md:p-4"
+            >
               <div className="flex items-start gap-3">
                 <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200 bg-white text-sm font-semibold text-zinc-900">
                   {idx + 1}
