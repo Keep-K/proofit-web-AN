@@ -21,18 +21,18 @@ export function SocialProof() {
 
       {/* Credibility Badges */}
       <Section>
-        <div className="flex flex-nowrap items-center justify-center gap-4 md:gap-8 overflow-x-auto">
+        <div className="flex flex-nowrap items-center justify-center gap-3 md:gap-6">
           {PARTNER_LOGOS.map((logo, idx) => (
             <div
               key={`logo-${idx}`}
-              className="relative h-16 w-40 shrink-0 opacity-50 transition-opacity hover:opacity-75 md:h-24 md:w-64"
+              className="relative h-14 w-36 shrink-0 opacity-50 transition-opacity hover:opacity-75 md:h-20 md:w-56"
             >
               <Image
                 src={logo}
                 alt={`Partner logo ${idx + 1}`}
                 fill
                 className="object-contain"
-                sizes="(max-width: 768px) 160px, 256px"
+                sizes="(max-width: 768px) 144px, 224px"
               />
             </div>
           ))}
