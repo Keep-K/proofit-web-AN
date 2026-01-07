@@ -16,9 +16,22 @@ export function Nav() {
       if (e.key === 'Escape') setMobileOpen(false)
     }
 
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement
+      const menu = document.getElementById(mobileMenuId)
+      const button = target.closest('button[aria-controls]')
+      if (menu && !menu.contains(target) && !button) {
+        setMobileOpen(false)
+      }
+    }
+
     window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
-  }, [mobileOpen])
+    window.addEventListener('click', handleClickOutside)
+    return () => {
+      window.removeEventListener('keydown', onKeyDown)
+      window.removeEventListener('click', handleClickOutside)
+    }
+  }, [mobileOpen, mobileMenuId])
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-bg/90">
@@ -32,6 +45,7 @@ export function Nav() {
             label="LOGO"
             className="h-9 w-9 shrink-0 rounded-lg"
             minHeightClassName="min-h-0"
+            hideLabel={true}
           />
           <span className="text-sm font-semibold tracking-wide text-text">
             {LANDING_COPY.nav.brand}
@@ -43,6 +57,13 @@ export function Nav() {
             <a
               key={l.id}
               href={`#${l.id}`}
+              onClick={(e) => {
+                e.preventDefault()
+                const element = document.getElementById(l.id)
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }
+              }}
               className="text-sm text-muted transition-colors hover:text-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25 rounded-md px-1 py-1"
             >
               {l.label}
@@ -123,7 +144,14 @@ export function Nav() {
                     key={l.id}
                     href={`#${l.id}`}
                     className="rounded-md px-3 py-2 text-sm text-muted hover:bg-surface-2 hover:text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
-                    onClick={() => setMobileOpen(false)}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      setMobileOpen(false)
+                      const element = document.getElementById(l.id)
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                      }
+                    }}
                   >
                     {l.label}
                   </a>

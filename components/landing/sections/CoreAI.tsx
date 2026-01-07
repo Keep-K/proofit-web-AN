@@ -25,13 +25,13 @@ export function CoreAI() {
             </div>
 
             <p className="mt-3 text-sm font-semibold text-text">{m.micro}</p>
-
             <p className="mt-2 text-sm leading-relaxed text-muted">{m.text}</p>
             <div className="mt-5">
               <Placeholder
                 label={m.slot}
                 minHeightClassName="min-h-[140px]"
                 className="rounded-xl"
+                subtle={true}
               />
             </div>
           </article>

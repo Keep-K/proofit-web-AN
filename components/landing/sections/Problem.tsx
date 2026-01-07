@@ -13,12 +13,13 @@ export function Problem() {
     >
       <div className="grid grid-cols-12 gap-6 items-start">
         <div className="col-span-12 lg:col-span-4">
-          <div className="rounded-2xl border border-border bg-surface/60 p-4">
+          <div className="rounded-2xl border border-border bg-surface/60 p-6">
             <Placeholder
               label={LANDING_COPY.problem.illustrationSlotLabel}
               minHeightClassName="min-h-[220px] lg:min-h-[280px]"
+              subtle={true}
             />
-            <p className="mt-4 text-sm text-muted">
+            <p className="mt-4 text-sm leading-relaxed text-muted">
               Existing platforms optimize for <span className="text-text font-medium">engagement</span>, not{' '}
               <span className="text-text font-medium">verified execution</span>.
             </p>
@@ -30,7 +31,7 @@ export function Problem() {
             {LANDING_COPY.problem.cards.map((c, idx) => (
               <div
                 key={c.title}
-                className="group flex h-full flex-col rounded-2xl border border-border bg-surface/60 p-5 transition-colors hover:bg-surface/75 md:min-h-[200px]"
+                className="group flex h-full flex-col rounded-2xl border border-border bg-surface/60 p-6 transition-colors hover:bg-surface/75 md:min-h-[200px]"
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted/80">
                   {cardEyebrows[idx] ?? `${String(idx + 1).padStart(2, '0')} / TOPIC`}

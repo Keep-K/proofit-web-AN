@@ -6,25 +6,29 @@ export function FAQ() {
     <Section id={SECTION_IDS.faq} eyebrow="FAQ" title={LANDING_COPY.faq.title}>
       <div className="grid grid-cols-12 gap-6 items-start">
         <div className="col-span-12 lg:col-span-8">
-          <div className="rounded-2xl border border-border bg-surface/60 p-2">
+          <div className="space-y-0 rounded-2xl border border-border bg-surface/60 divide-y divide-border/50">
             {LANDING_COPY.faq.items.map((item) => (
               <details
                 key={item.q}
-                className="group rounded-xl border border-transparent p-4 transition-colors hover:border-border hover:bg-surface/70 focus-within:border-border focus-within:bg-surface/70"
+                className="group"
               >
                 <summary
                   className={[
                     'cursor-pointer list-none text-sm font-medium text-text focus:outline-none',
-                    'flex items-center justify-between gap-4',
-                    "after:content-['+'] after:text-muted-2 after:transition-transform after:duration-200 after:font-mono after:text-lg after:leading-none",
-                    "group-open:after:content-['–']",
-                    'focus-visible:ring-2 focus-visible:ring-accent/25 rounded-lg px-1 py-1',
+                    'flex items-center justify-between gap-4 px-6 py-4',
+                    'transition-colors hover:bg-surface/50',
+                    'focus-visible:ring-2 focus-visible:ring-accent/25 focus-visible:ring-inset',
                     '[&::-webkit-details-marker]:hidden',
+                    "before:content-[''] before:w-0 before:flex-shrink-0",
+                    "after:content-['+'] after:text-muted-2 after:transition-transform after:duration-200 after:font-mono after:text-lg after:leading-none after:flex-shrink-0",
+                    "group-open:after:content-['–']",
                   ].join(' ')}
                 >
-                  <span className="pr-2">{item.q}</span>
+                  <span className="pr-4 flex-1">{item.q}</span>
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-muted">{item.a}</p>
+                <div className="px-6 pb-4 pt-0">
+                  <p className="text-sm leading-relaxed text-muted">{item.a}</p>
+                </div>
               </details>
             ))}
           </div>

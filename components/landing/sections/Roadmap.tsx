@@ -30,21 +30,21 @@ export function Roadmap() {
         <div className="col-span-12 lg:col-span-4 space-y-4">
           <div className="rounded-2xl border border-border bg-surface/60 p-6">
             <p className="text-sm font-medium text-text">{LANDING_COPY.roadmap.safetyTitle}</p>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-4 space-y-3">
               {LANDING_COPY.roadmap.safety.map((s) => (
-                <li key={s} className="flex items-start gap-3 text-sm text-muted">
-                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-text/55" />
-                  <span className="leading-relaxed">{s}</span>
+                <li key={s} className="flex items-start gap-3 text-sm leading-relaxed text-muted">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-text/45" />
+                  <span>{s}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-border bg-surface/50 p-6">
+          <div className="rounded-xl border border-border bg-surface/50 p-4">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted/80">
               Rollout principle
             </p>
-            <p className="mt-2 text-sm text-muted">
+            <p className="mt-2 text-sm leading-relaxed text-muted">
               Ship gates first. Expand only when trust signals stay stable.
             </p>
           </div>

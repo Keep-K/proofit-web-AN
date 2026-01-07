@@ -38,11 +38,12 @@ export function Hero() {
         </div>
 
         <div>
-          <div className="rounded-2xl border border-border bg-surface/60 p-4">
+          <div className="rounded-2xl border border-border bg-surface/60 p-6">
             <Placeholder
               label="HERO VISUAL SLOT"
               minHeightClassName="min-h-[280px] sm:min-h-[420px] md:min-h-[520px]"
               className="rounded-xl"
+              subtle={true}
             />
           </div>
         </div>
