@@ -2,29 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CSS Variables for /app/proofit page */
-:root {
-  --max-width: 1200px;
-  --horizontal-padding: 24px;
-  --section-padding-desktop: 120px;
-  --section-padding-tablet: 80px;
-  --section-padding-mobile: 64px;
-  --grid-gap: 24px;
-  --border-color: #e0e0e0;
-  --border-radius: 8px;
-  --h1-size: clamp(3rem, 8vw, 5rem);
-  --h1-weight: 700;
-  --h1-line-height: 1.1;
-  --h2-size: clamp(2rem, 5vw, 3rem);
-  --h2-weight: 600;
-  --h2-line-height: 1.2;
-  --body-size: 16px;
-  --body-line-height: 1.6;
-  --eyebrow-size: 12px;
-  --eyebrow-weight: 600;
-  --eyebrow-spacing: 0.1em;
-}
-
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -32,7 +9,7 @@
   }
 
   body {
-    @apply min-h-screen bg-zinc-50 text-zinc-950 antialiased;
+    @apply min-h-screen bg-stone-50 text-zinc-950 antialiased;
   }
 
   a {
@@ -40,7 +17,7 @@
   }
 
   ::selection {
-    background: rgba(24, 24, 27, 0.12);
+    background: rgba(9, 9, 11, 0.14);
   }
 }
 

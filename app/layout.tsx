@@ -28,7 +28,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className="min-h-screen">{children}</body>
+      <body className="min-h-screen bg-stone-50 text-zinc-950 antialiased">
+        {children}
+      </body>
     </html>
   )
 }
