@@ -23,7 +23,7 @@ export function Section({
       id={id}
       className={[
         'scroll-mt-24 py-20 md:py-28',
-        'border-t border-stone-200/70',
+        'border-t border-border/70',
         className ?? '',
       ].join(' ')}
     >
@@ -31,17 +31,17 @@ export function Section({
         {hasHeading && (
           <header className="max-w-2xl">
             {eyebrow && (
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-stone-500">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-muted/80">
                 {eyebrow}
               </p>
             )}
             {title && (
-              <h2 className="text-balance text-3xl font-medium leading-snug tracking-tight text-zinc-950 sm:text-4xl">
+              <h2 className="text-balance text-3xl font-medium leading-snug tracking-tight text-text sm:text-4xl">
                 {title}
               </h2>
             )}
             {lead && (
-              <p className="mt-4 text-pretty text-base leading-relaxed text-stone-600 sm:text-lg">
+              <p className="mt-4 text-pretty text-base leading-relaxed text-muted sm:text-lg">
                 {lead}
               </p>
             )}

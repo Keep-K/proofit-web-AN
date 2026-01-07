@@ -21,11 +21,11 @@ export function Nav() {
   }, [mobileOpen])
 
   return (
-    <header className="sticky top-0 z-50 border-b border-stone-200/70 bg-stone-50/90">
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-bg/90">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-4">
         <Link
           href="/"
-          className="group inline-flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/20"
+          className="group inline-flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
           aria-label="PROOFIT Home"
         >
           <Placeholder
@@ -33,7 +33,7 @@ export function Nav() {
             className="h-9 w-9 shrink-0 rounded-lg"
             minHeightClassName="min-h-0"
           />
-          <span className="text-sm font-semibold tracking-wide text-zinc-950">
+          <span className="text-sm font-semibold tracking-wide text-text">
             {LANDING_COPY.nav.brand}
           </span>
         </Link>
@@ -43,7 +43,7 @@ export function Nav() {
             <a
               key={l.id}
               href={`#${l.id}`}
-              className="text-sm text-stone-600 transition-colors hover:text-zinc-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/15 rounded-md px-1 py-1"
+              className="text-sm text-muted transition-colors hover:text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25 rounded-md px-1 py-1"
             >
               {l.label}
             </a>
@@ -52,7 +52,7 @@ export function Nav() {
 
         <div className="flex items-center gap-3">
           <a
-            className="hidden rounded-md border border-stone-200 bg-transparent px-3 py-2 text-sm font-medium text-zinc-900 transition hover:bg-white/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/15 md:inline-flex"
+            className="hidden rounded-md border border-border bg-transparent px-3 py-2 text-sm font-medium text-accent transition hover:bg-surface/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25 md:inline-flex"
             href={WHITEPAPER_URL}
             target="_blank"
             rel="noreferrer"
@@ -63,7 +63,7 @@ export function Nav() {
           <div className="flex md:hidden">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md border border-stone-200 bg-transparent px-3 py-2 text-sm font-medium text-zinc-900 transition hover:bg-white/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/15"
+              className="inline-flex items-center justify-center rounded-md border border-border bg-transparent px-3 py-2 text-sm font-medium text-text transition hover:bg-surface/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
               aria-label="메뉴 열기"
               aria-controls={mobileMenuId}
               aria-expanded={mobileOpen}
@@ -75,7 +75,7 @@ export function Nav() {
                 width="18"
                 height="18"
                 aria-hidden="true"
-                className="text-zinc-900"
+                className="text-text"
               >
                 {mobileOpen ? (
                   <path
@@ -99,16 +99,16 @@ export function Nav() {
           <button
             type="button"
             aria-label="메뉴 닫기"
-            className="absolute inset-0 bg-zinc-950/15"
+            className="absolute inset-0 bg-text/10"
             onClick={() => setMobileOpen(false)}
           />
           <div
             id={mobileMenuId}
-            className="absolute right-6 top-[72px] w-[min(86vw,340px)] rounded-xl border border-stone-200 bg-stone-50 p-2"
+            className="absolute right-6 top-[72px] w-[min(86vw,340px)] rounded-xl border border-border bg-bg p-2"
           >
             <div className="flex flex-col">
               <a
-                className="rounded-md border border-stone-200 bg-white/60 px-3 py-2 text-sm font-medium text-zinc-900 transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/15"
+                className="rounded-md border border-border bg-surface/70 px-3 py-2 text-sm font-medium text-accent transition hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
                 href={WHITEPAPER_URL}
                 target="_blank"
                 rel="noreferrer"
@@ -116,13 +116,13 @@ export function Nav() {
               >
                 {LANDING_COPY.nav.cta}
               </a>
-              <div className="my-2 border-t border-stone-200/70" />
+              <div className="my-2 border-t border-border/70" />
               <nav className="flex flex-col" aria-label="Mobile">
                 {NAV_LINKS.map((l) => (
                   <a
                     key={l.id}
                     href={`#${l.id}`}
-                    className="rounded-md px-3 py-2 text-sm text-stone-700 hover:bg-white/70 hover:text-zinc-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/15"
+                    className="rounded-md px-3 py-2 text-sm text-muted hover:bg-surface/70 hover:text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
                     onClick={() => setMobileOpen(false)}
                   >
                     {l.label}

@@ -9,24 +9,24 @@ export function CoreAI() {
         {LANDING_COPY.coreAI.modules.map((m) => (
           <article
             key={m.title}
-            className="group rounded-2xl border border-stone-200 bg-white/60 p-6 transition-colors hover:bg-white/80"
+            className="group rounded-2xl border border-border bg-surface/60 p-6 transition-colors hover:bg-surface/75"
           >
-            <h3 className="text-base font-medium text-zinc-950">{m.title}</h3>
+            <h3 className="text-base font-medium text-text">{m.title}</h3>
 
             <div className="mt-3 flex flex-wrap gap-2">
               {m.chips.slice(0, 3).map((chip) => (
                 <span
                   key={`${m.title}-${chip}`}
-                  className="inline-flex items-center rounded-full border border-stone-200 bg-stone-50 px-2.5 py-1 text-xs font-medium text-stone-700"
+                  className="inline-flex items-center rounded-full border border-border bg-surface/60 px-2.5 py-1 text-xs font-medium text-muted"
                 >
                   {chip}
                 </span>
               ))}
             </div>
 
-            <p className="mt-3 text-sm font-semibold text-zinc-900">{m.micro}</p>
+            <p className="mt-3 text-sm font-semibold text-text">{m.micro}</p>
 
-            <p className="mt-2 text-sm leading-relaxed text-stone-600">{m.text}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{m.text}</p>
             <div className="mt-5">
               <Placeholder
                 label={m.slot}

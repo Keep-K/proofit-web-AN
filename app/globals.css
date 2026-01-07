@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Anthropic-like, warm & research-grade palette (RGB triplets for Tailwind alpha support) */
+  --bg: 250 250 248; /* #FAFAF8 */
+  --surface: 255 255 255; /* #FFFFFF */
+  --text: 22 22 22; /* #161616 */
+  --muted: 95 99 104; /* #5F6368 */
+  --border: 230 230 227; /* #E6E6E3 */
+  --accent: 47 111 237; /* restrained single accent */
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -9,7 +19,7 @@
   }
 
   body {
-    @apply min-h-screen bg-stone-50 text-zinc-950 antialiased font-sans leading-[1.55];
+    @apply min-h-screen bg-bg text-text antialiased font-sans leading-[1.55];
   }
 
   a {
@@ -17,7 +27,7 @@
   }
 
   ::selection {
-    background: rgba(9, 9, 11, 0.14);
+    background: rgb(var(--accent) / 0.16);
   }
 }
 

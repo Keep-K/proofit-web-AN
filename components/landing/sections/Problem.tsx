@@ -13,14 +13,14 @@ export function Problem() {
     >
       <div className="grid grid-cols-12 gap-6 items-start">
         <div className="col-span-12 lg:col-span-4">
-          <div className="rounded-2xl border border-stone-200 bg-white/60 p-4">
+          <div className="rounded-2xl border border-border bg-surface/60 p-4">
             <Placeholder
               label={LANDING_COPY.problem.illustrationSlotLabel}
               minHeightClassName="min-h-[220px] lg:min-h-[280px]"
             />
-            <p className="mt-4 text-sm text-stone-600">
-              Existing platforms optimize for <span className="text-zinc-900 font-medium">engagement</span>,
-              not <span className="text-zinc-900 font-medium">verified execution</span>.
+            <p className="mt-4 text-sm text-muted">
+              Existing platforms optimize for <span className="text-text font-medium">engagement</span>, not{' '}
+              <span className="text-text font-medium">verified execution</span>.
             </p>
           </div>
         </div>
@@ -30,15 +30,15 @@ export function Problem() {
             {LANDING_COPY.problem.cards.map((c, idx) => (
               <div
                 key={c.title}
-                className="group flex h-full flex-col rounded-2xl border border-stone-200 bg-white/60 p-5 transition-colors hover:bg-white/80 md:min-h-[200px]"
+                className="group flex h-full flex-col rounded-2xl border border-border bg-surface/60 p-5 transition-colors hover:bg-surface/75 md:min-h-[200px]"
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-500">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted/80">
                   {cardEyebrows[idx] ?? `${String(idx + 1).padStart(2, '0')} / TOPIC`}
                 </p>
-                <h3 className="mt-3 text-base font-medium text-zinc-950">
+                <h3 className="mt-3 text-base font-medium text-text">
                   {c.title.replace(/^\s*[•·‣▪-]+\s*/, '')}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-stone-600">{c.text}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{c.text}</p>
               </div>
             ))}
           </div>

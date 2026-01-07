@@ -7,7 +7,7 @@ export function SocialProof() {
   return (
     <Section>
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <p className="text-sm text-stone-600">{LANDING_COPY.socialProof.line}</p>
+        <p className="text-sm text-muted">{LANDING_COPY.socialProof.line}</p>
         <div className="-mx-2 flex gap-3 overflow-x-auto px-2 py-1 md:mx-0 md:flex-wrap md:overflow-visible md:px-0">
           {logoSlots.map((_, idx) => (
             <Placeholder
