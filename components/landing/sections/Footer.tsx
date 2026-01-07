@@ -17,7 +17,7 @@ export function Footer() {
               <a
                 key={l.label}
                 href={l.href}
-                className="text-sm text-muted hover:text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25 rounded-md px-1 py-1"
+                className="text-sm text-muted transition-colors hover:text-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25 rounded-md px-1 py-1"
               >
                 {l.label}
               </a>

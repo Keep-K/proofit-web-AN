@@ -3,19 +3,24 @@
 @tailwind utilities;
 
 :root {
-  /* Anthropic-like, warm & research-grade palette (RGB triplets for Tailwind alpha support) */
-  --bg: 250 250 248; /* #FAFAF8 */
-  --surface: 255 255 255; /* #FFFFFF */
-  --text: 22 22 22; /* #161616 */
-  --muted: 95 99 104; /* #5F6368 */
-  --border: 230 230 227; /* #E6E6E3 */
-  --accent: 47 111 237; /* restrained single accent */
+  /* Light theme (default) - Anthropic.com style, research-grade palette */
+  /* RGB triplets for Tailwind alpha support */
+  --bg: 240 238 230; /* #f0eee6 - warm beige/cream background */
+  --surface: 255 255 255; /* #FFFFFF - white surfaces */
+  --surface-2: 250 249 245; /* #FAF9F5 - subtle cream layer */
+  --text: 22 22 22; /* #161616 - near-black text */
+  --muted: 95 99 104; /* #5F6368 - warm gray for secondary text */
+  --muted-2: 128 128 128; /* #808080 - deeper gray */
+  --border: 230 228 220; /* #E6E4DC - warm subtle border */
+  --accent: 199 110 0; /* #C76E00 - deep burnt orange */
+  --accent-2: 224 138 30; /* #E08A1E - hover accent */
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 88px; /* sticky nav offset */
+    color-scheme: light; /* Light theme */
   }
 
   body {

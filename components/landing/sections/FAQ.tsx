@@ -16,7 +16,7 @@ export function FAQ() {
                   className={[
                     'cursor-pointer list-none text-sm font-medium text-text focus:outline-none',
                     'flex items-center justify-between gap-4',
-                    "after:content-['+'] after:text-muted/80 after:transition",
+                    "after:content-['+'] after:text-muted-2 after:transition-transform after:duration-200 after:font-mono after:text-lg after:leading-none",
                     "group-open:after:content-['–']",
                     'focus-visible:ring-2 focus-visible:ring-accent/25 rounded-lg px-1 py-1',
                     '[&::-webkit-details-marker]:hidden',
@@ -40,7 +40,7 @@ export function FAQ() {
               href={WHITEPAPER_URL}
               target="_blank"
               rel="noreferrer"
-              className="mt-5 inline-flex w-full items-center justify-center rounded-md bg-accent px-5 py-3 text-sm font-medium text-surface transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
+              className="mt-5 inline-flex w-full items-center justify-center rounded-md bg-accent px-5 py-3 text-sm font-medium text-surface transition hover:bg-accent-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
             >
               Read Whitepaper
             </a>

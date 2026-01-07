@@ -43,7 +43,7 @@ export function Nav() {
             <a
               key={l.id}
               href={`#${l.id}`}
-              className="text-sm text-muted transition-colors hover:text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25 rounded-md px-1 py-1"
+              className="text-sm text-muted transition-colors hover:text-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25 rounded-md px-1 py-1"
             >
               {l.label}
             </a>
@@ -52,7 +52,7 @@ export function Nav() {
 
         <div className="flex items-center gap-3">
           <a
-            className="hidden rounded-md border border-border bg-transparent px-3 py-2 text-sm font-medium text-accent transition hover:bg-surface/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25 md:inline-flex"
+            className="hidden rounded-md border border-border bg-transparent px-3 py-2 text-sm font-medium text-accent transition hover:bg-surface-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25 md:inline-flex"
             href={WHITEPAPER_URL}
             target="_blank"
             rel="noreferrer"
@@ -63,7 +63,7 @@ export function Nav() {
           <div className="flex md:hidden">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md border border-border bg-transparent px-3 py-2 text-sm font-medium text-text transition hover:bg-surface/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
+              className="inline-flex items-center justify-center rounded-md border border-border bg-transparent px-3 py-2 text-sm font-medium text-text transition hover:bg-surface-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
               aria-label="메뉴 열기"
               aria-controls={mobileMenuId}
               aria-expanded={mobileOpen}
@@ -108,7 +108,7 @@ export function Nav() {
           >
             <div className="flex flex-col">
               <a
-                className="rounded-md border border-border bg-surface/70 px-3 py-2 text-sm font-medium text-accent transition hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
+                className="rounded-md border border-border bg-surface px-3 py-2 text-sm font-medium text-accent transition hover:bg-surface-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
                 href={WHITEPAPER_URL}
                 target="_blank"
                 rel="noreferrer"
@@ -122,7 +122,7 @@ export function Nav() {
                   <a
                     key={l.id}
                     href={`#${l.id}`}
-                    className="rounded-md px-3 py-2 text-sm text-muted hover:bg-surface/70 hover:text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
+                    className="rounded-md px-3 py-2 text-sm text-muted hover:bg-surface-2 hover:text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
                     onClick={() => setMobileOpen(false)}
                   >
                     {l.label}

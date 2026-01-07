@@ -22,7 +22,7 @@ export function Hero() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
               href={`#${SECTION_IDS.system}`}
-              className="inline-flex w-full items-center justify-center rounded-md bg-accent px-5 py-3 text-sm font-medium text-surface transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25 sm:w-auto"
+              className="inline-flex w-full items-center justify-center rounded-md bg-accent px-5 py-3 text-sm font-medium text-surface transition hover:bg-accent-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25 sm:w-auto"
             >
               {LANDING_COPY.hero.primaryCta}
             </a>
@@ -30,7 +30,7 @@ export function Hero() {
               href={WHITEPAPER_URL}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex w-full items-center justify-center rounded-md border border-border bg-transparent px-5 py-3 text-sm font-medium text-text transition hover:bg-surface/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25 sm:w-auto"
+              className="inline-flex w-full items-center justify-center rounded-md border border-border bg-transparent px-5 py-3 text-sm font-medium text-text transition hover:bg-surface-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25 sm:w-auto"
             >
               {LANDING_COPY.hero.secondaryCta}
             </a>

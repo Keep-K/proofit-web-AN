@@ -3,33 +3,31 @@ import { Section } from '@/components/landing/Section'
 
 function FlowStepper() {
   return (
-    <div className="rounded-2xl border border-border bg-surface/60 p-5">
-      <div className="flex items-center justify-between gap-4">
-        <h3 className="text-sm font-medium text-text">
-          {LANDING_COPY.solution.flowTitle}
-        </h3>
-      </div>
+    <div className="rounded-2xl border border-border bg-surface/60 p-6">
+      <h3 className="text-sm font-medium text-text">
+        {LANDING_COPY.solution.flowTitle}
+      </h3>
 
-      <div className="mt-4">
-        <ol className="grid gap-3 md:grid-cols-4 md:gap-4">
+      <div className="mt-6">
+        <ol className="grid gap-4 md:grid-cols-4 md:gap-5">
           {LANDING_COPY.solution.flow.map((s, idx) => (
             <li
               key={s.title}
-              className="relative rounded-xl border border-border bg-surface/50 p-4"
+              className="relative flex flex-col"
             >
               <div className="flex items-start gap-3">
-                <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface/70 text-sm font-medium text-text">
+                <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-surface text-xs font-semibold text-text">
                   {idx + 1}
                 </div>
-                <div>
-                  <p className="text-sm font-medium text-text">{s.title}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-muted">{s.text}</p>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-semibold text-text">{s.title}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted">{s.text}</p>
                 </div>
               </div>
               {idx < LANDING_COPY.solution.flow.length - 1 && (
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute right-[-10px] top-1/2 hidden h-px w-5 bg-border md:block"
+                  className="pointer-events-none absolute right-[-18px] top-4 hidden h-0.5 w-[18px] bg-border/60 md:block"
                 />
               )}
             </li>
