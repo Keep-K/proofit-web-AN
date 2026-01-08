@@ -74,6 +74,12 @@ export function Nav() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <Link
+            href="/proofit"
+            className="hidden rounded-md border border-border bg-transparent px-3 py-2 text-sm font-medium text-accent transition hover:bg-surface-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25 md:inline-flex"
+          >
+            Proofit App
+          </Link>
           <a
             className="hidden rounded-md border border-border bg-transparent px-3 py-2 text-sm font-medium text-accent transition hover:bg-surface-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25 md:inline-flex"
             href={WHITEPAPER_URL}
@@ -130,6 +136,13 @@ export function Nav() {
             className="absolute right-6 top-[72px] w-[min(86vw,340px)] rounded-xl border border-border bg-bg p-2"
           >
             <div className="flex flex-col">
+              <Link
+                href="/proofit"
+                className="rounded-md border border-border bg-surface px-3 py-2 text-sm font-medium text-accent transition hover:bg-surface-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
+                onClick={() => setMobileOpen(false)}
+              >
+                Proofit App
+              </Link>
               <a
                 className="rounded-md border border-border bg-surface px-3 py-2 text-sm font-medium text-accent transition hover:bg-surface-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/25"
                 href={WHITEPAPER_URL}
