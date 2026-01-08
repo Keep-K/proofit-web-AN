@@ -29,25 +29,39 @@ export default function ProofitPage() {
         const { initNutritionPage } = await import('@/Jass_project/pages/nutrition.js')
 
         // 원본 app.js의 init 함수 로직
-        const btnWallet = document.getElementById('btnWallet')
+        const btnWallet = document.getElementById('btnWallet') as HTMLButtonElement | null
         const walletStatus = document.getElementById('walletStatus')
 
         if (btnWallet && walletStatus) {
-          function showLoadingOverlay() {
+          const showLoadingOverlay = () => {
             const overlay = document.getElementById('walletLoadingOverlay')
             if (overlay) {
               overlay.style.display = 'flex'
             }
           }
 
-          function hideLoadingOverlay() {
+          const hideLoadingOverlay = () => {
             const overlay = document.getElementById('walletLoadingOverlay')
             if (overlay) {
               overlay.style.display = 'none'
             }
           }
 
-          function disconnectWallet() {
+          const updateWalletButton = () => {
+            const isConnected = !!getAccessToken()
+
+            if (isConnected) {
+              btnWallet.innerHTML = 'Disconnect'
+              btnWallet.classList.add('connected')
+              btnWallet.disabled = false
+            } else {
+              btnWallet.innerHTML = 'Connect Wallet'
+              btnWallet.classList.remove('connected')
+              btnWallet.disabled = false
+            }
+          }
+
+          const disconnectWallet = () => {
             showLoadingOverlay()
             removeAccessToken()
             updateWalletButton()
@@ -68,7 +82,7 @@ export default function ProofitPage() {
             }, 500)
           }
 
-          async function connectWalletHandler() {
+          const connectWalletHandler = async () => {
             try {
               showLoadingOverlay()
               const address = await connectWallet()
@@ -113,20 +127,6 @@ export default function ProofitPage() {
               await connectWalletHandler()
             }
           })
-
-          function updateWalletButton() {
-            const isConnected = !!getAccessToken()
-
-            if (isConnected) {
-              btnWallet.innerHTML = 'Disconnect'
-              btnWallet.classList.add('connected')
-              btnWallet.disabled = false
-            } else {
-              btnWallet.innerHTML = 'Connect Wallet'
-              btnWallet.classList.remove('connected')
-              btnWallet.disabled = false
-            }
-          }
 
           updateWalletButton()
 

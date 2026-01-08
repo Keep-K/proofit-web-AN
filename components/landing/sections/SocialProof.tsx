@@ -1,7 +1,6 @@
 'use client'
 
 import { LANDING_COPY } from '@/lib/landing/content'
-import { Section } from '@/components/landing/Section'
 import { KickerStrip } from '@/components/landing/KickerStrip'
 
 // 파트너 placeholder - 나중에 실제 이미지로 교체
@@ -20,21 +19,19 @@ export function SocialProof() {
         badges={['Verification-first', 'Integrity-gated', 'Accumulative records']}
       />
 
-      {/* Credibility Badges - 무한 스크롤 (우에서 좌로) */}
-      <Section>
-        <div className="relative overflow-hidden w-full">
-          <div className="flex items-center gap-3 md:gap-6 animate-scroll-left whitespace-nowrap">
-            {duplicatedPartners.map((partner, idx) => (
-              <div
-                key={`${partner}-${idx}`}
-                className="flex h-14 w-36 shrink-0 items-center justify-center rounded-lg border border-border bg-surface/60 px-4 py-2 opacity-50 transition-opacity hover:opacity-75 md:h-20 md:w-56"
-              >
-                <span className="text-xs font-medium text-muted md:text-sm">{partner}</span>
-              </div>
-            ))}
-          </div>
+      {/* Credibility Badges - 무한 스크롤 (우에서 좌로) - 전체 너비 */}
+      <div className="w-full overflow-hidden py-6 md:py-8">
+        <div className="flex items-center gap-3 md:gap-6 animate-scroll-left whitespace-nowrap">
+          {duplicatedPartners.map((partner, idx) => (
+            <div
+              key={`${partner}-${idx}`}
+              className="flex h-14 w-36 shrink-0 items-center justify-center rounded-lg border border-border bg-surface/60 px-4 py-2 opacity-50 transition-opacity hover:opacity-75 md:h-20 md:w-56"
+            >
+              <span className="text-xs font-medium text-muted md:text-sm">{partner}</span>
+            </div>
+          ))}
         </div>
-      </Section>
+      </div>
     </>
   )
 }

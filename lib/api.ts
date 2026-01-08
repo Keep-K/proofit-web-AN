@@ -33,19 +33,21 @@ export function removeAccessToken(): void {
   localStorage.removeItem('proofit_access_token');
 }
 
-export async function fetchJSON<T = any>(
-  url: string,
-  options: RequestInit = {}
-): Promise<T> {
-  const headers: HeadersInit = {
-    'Content-Type': 'application/json',
-    ...(options.headers || {}),
-  };
+  export async function fetchJSON<T = any>(
+    url: string,
+    options: RequestInit = {}
+  ): Promise<T> {
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      ...(typeof options.headers === 'object' && !Array.isArray(options.headers) && options.headers instanceof Headers === false
+        ? (options.headers as Record<string, string>)
+        : {}),
+    };
 
-  const token = getAccessToken();
-  if (token) {
-    headers['Authorization'] = `Bearer ${token}`;
-  }
+    const token = getAccessToken();
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
 
   const res = await fetch(getAPIBase() + url, { ...options, headers });
 
