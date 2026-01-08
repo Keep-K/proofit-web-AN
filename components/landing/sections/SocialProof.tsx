@@ -19,8 +19,8 @@ export function SocialProof() {
         badges={['Verification-first', 'Integrity-gated', 'Accumulative records']}
       />
 
-      {/* Credibility Badges - 무한 스크롤 (우에서 좌로) - 전체 너비 */}
-      <div className="w-full overflow-hidden py-6 md:py-8">
+      {/* Credibility Badges - 무한 스크롤 (우에서 좌로) - 전체 너비 (full-bleed) */}
+      <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden py-6 md:py-8">
         <div className="flex items-center gap-3 md:gap-6 animate-scroll-left whitespace-nowrap">
           {duplicatedPartners.map((partner, idx) => (
             <div
