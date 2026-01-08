@@ -1,16 +1,19 @@
+import dynamic from 'next/dynamic'
 import { Nav } from '@/components/landing/Nav'
 import { Hero } from '@/components/landing/sections/Hero'
 import { SocialProof } from '@/components/landing/sections/SocialProof'
 import { Problem } from '@/components/landing/sections/Problem'
-import { Solution } from '@/components/landing/sections/Solution'
-import { CoreAI } from '@/components/landing/sections/CoreAI'
-import { Integrity } from '@/components/landing/sections/Integrity'
-import { Rewards } from '@/components/landing/sections/Rewards'
-import { Token } from '@/components/landing/sections/Token'
-import { Roadmap } from '@/components/landing/sections/Roadmap'
-import { FAQ } from '@/components/landing/sections/FAQ'
-import { FinalCTA } from '@/components/landing/sections/FinalCTA'
-import { Footer } from '@/components/landing/sections/Footer'
+
+// 아래쪽 섹션들은 lazy loading으로 최적화 (초기 번들 크기 감소)
+const Solution = dynamic(() => import('@/components/landing/sections/Solution').then((mod) => ({ default: mod.Solution })))
+const CoreAI = dynamic(() => import('@/components/landing/sections/CoreAI').then((mod) => ({ default: mod.CoreAI })))
+const Integrity = dynamic(() => import('@/components/landing/sections/Integrity').then((mod) => ({ default: mod.Integrity })))
+const Rewards = dynamic(() => import('@/components/landing/sections/Rewards').then((mod) => ({ default: mod.Rewards })))
+const Token = dynamic(() => import('@/components/landing/sections/Token').then((mod) => ({ default: mod.Token })))
+const Roadmap = dynamic(() => import('@/components/landing/sections/Roadmap').then((mod) => ({ default: mod.Roadmap })))
+const FAQ = dynamic(() => import('@/components/landing/sections/FAQ').then((mod) => ({ default: mod.FAQ })))
+const FinalCTA = dynamic(() => import('@/components/landing/sections/FinalCTA').then((mod) => ({ default: mod.FinalCTA })))
+const Footer = dynamic(() => import('@/components/landing/sections/Footer').then((mod) => ({ default: mod.Footer })))
 
 export default function Home() {
   return (

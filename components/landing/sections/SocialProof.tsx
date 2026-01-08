@@ -1,16 +1,17 @@
-import Image from 'next/image'
+'use client'
+
 import { LANDING_COPY } from '@/lib/landing/content'
 import { Section } from '@/components/landing/Section'
 import { KickerStrip } from '@/components/landing/KickerStrip'
 
-const PARTNER_LOGOS = [
-  '/images/partners/partner-logo-1.png',
-  '/images/partners/partner-logo-2.png',
-  '/images/partners/partner-logo-3.png',
-  '/images/partners/partner-logo-5.png',
-] as const
+// 파트너 placeholder - 나중에 실제 이미지로 교체
+const PARTNER_COUNT = 8 // 무한 스크롤을 위한 충분한 수량
 
 export function SocialProof() {
+  // 무한 스크롤을 위해 아이템을 복제
+  const partners = Array.from({ length: PARTNER_COUNT }, (_, i) => `partner-${i + 1}`)
+  const duplicatedPartners = [...partners, ...partners] // seamless loop를 위해 복제
+
   return (
     <>
       {/* Kicker Strip - Full width, connects Hero to credibility badges */}
@@ -19,23 +20,19 @@ export function SocialProof() {
         badges={['Verification-first', 'Integrity-gated', 'Accumulative records']}
       />
 
-      {/* Credibility Badges */}
+      {/* Credibility Badges - 무한 스크롤 (우에서 좌로) */}
       <Section>
-        <div className="flex flex-nowrap items-center justify-center gap-3 md:gap-6">
-          {PARTNER_LOGOS.map((logo, idx) => (
-            <div
-              key={`logo-${idx}`}
-              className="relative h-14 w-36 shrink-0 opacity-50 transition-opacity hover:opacity-75 md:h-20 md:w-56"
-            >
-              <Image
-                src={logo}
-                alt={`Partner logo ${idx + 1}`}
-                fill
-                className="object-contain"
-                sizes="(max-width: 768px) 144px, 224px"
-              />
-            </div>
-          ))}
+        <div className="relative overflow-hidden w-full">
+          <div className="flex items-center gap-3 md:gap-6 animate-scroll-left whitespace-nowrap">
+            {duplicatedPartners.map((partner, idx) => (
+              <div
+                key={`${partner}-${idx}`}
+                className="flex h-14 w-36 shrink-0 items-center justify-center rounded-lg border border-border bg-surface/60 px-4 py-2 opacity-50 transition-opacity hover:opacity-75 md:h-20 md:w-56"
+              >
+                <span className="text-xs font-medium text-muted md:text-sm">{partner}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
     </>

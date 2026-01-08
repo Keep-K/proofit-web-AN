@@ -1,0 +1,114 @@
+/* ============================================
+   디자인 시스템 (Design Tokens) - LayerEdge 스타일
+   다크 테마 기반, 블러 효과, 그라데이션 중심
+   ============================================ */
+
+:root {
+  /* 주황색 기반 색상 팔레트 - 메인 accent 색상 사용 */
+  --color-primary: #FF9500;
+  --color-primary-dark: #E6850E;
+  --color-primary-light: #FFB84D;
+  --color-primary-gradient: linear-gradient(135deg, #E6850E 0%, #FF9500 50%, #FFB84D 100%);
+  --color-primary-gradient-subtle: linear-gradient(135deg, rgba(255, 149, 0, 0.2) 0%, rgba(255, 184, 77, 0.2) 100%);
+  
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-info: #3b82f6;
+  
+  /* 텍스트 색상 - 메인 페이지 색상 적용 (라이트 테마) */
+  --color-text-primary: #161616; /* 메인 --text */
+  --color-text-secondary: #5F6368; /* 메인 --muted */
+  --color-text-muted: #808080; /* 메인 --muted-2 */
+  --color-text-disabled: #a0a0a0;
+  
+  /* 배경 색상 - 메인 페이지 색상 적용 (라이트 테마) */
+  --color-bg-primary: #f0eee6; /* 메인 --bg */
+  --color-bg-secondary: #FFFFFF; /* 메인 --surface */
+  --color-bg-tertiary: #FAF9F5; /* 메인 --surface-2 */
+  --color-bg-overlay: rgba(0, 0, 0, 0.5);
+  
+  /* 반투명 배경 (블러 효과용) - 라이트 테마용 */
+  --color-bg-glass: rgba(255, 255, 255, 0.8);
+  --color-bg-glass-strong: rgba(255, 255, 255, 0.95);
+  --color-bg-glass-subtle: rgba(255, 255, 255, 0.6);
+  
+  /* 테두리 색상 - 메인 페이지 색상 적용 */
+  --color-border: #E6E4DC; /* 메인 --border */
+  --color-border-light: rgba(230, 228, 220, 0.5);
+  --color-border-strong: rgba(230, 228, 220, 0.8);
+  
+  /* 타이포그래피 */
+  --font-family-base: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-family-heading: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 32px;
+  --font-size-4xl: 48px;
+  --font-size-5xl: 64px;
+  
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* 간격 (Spacing) */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  --spacing-4xl: 96px;
+  
+  /* 둥근 모서리 */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+  
+  /* 그림자 - 다크 테마용 (밝은 그림자) */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(255, 149, 0, 0.3);
+  --shadow-glow-strong: 0 0 40px rgba(255, 149, 0, 0.5);
+  
+  /* 블러 효과 */
+  --blur-sm: blur(8px);
+  --blur-md: blur(16px);
+  --blur-lg: blur(24px);
+  --blur-xl: blur(40px);
+  
+  /* 전환 효과 */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+  /* Z-index 레이어 */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}

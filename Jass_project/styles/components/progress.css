@@ -1,0 +1,373 @@
+/* ============================================
+   진행률 시각화 컴포넌트 - 토스 스타일
+   ============================================ */
+
+/* 원형 프로그레스 바 */
+.circular-progress {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+}
+
+.circular-progress svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* SVG 기본 스타일 - viewBox는 HTML에서 직접 설정 */
+
+.circular-progress-circle-bg {
+  fill: none;
+  stroke: rgba(230, 228, 220, 0.5); /* 메인 --border 색상 사용 */
+  stroke-width: 8;
+}
+
+.circular-progress-circle {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 8px rgba(255, 149, 0, 0.4));
+}
+
+/* 중간 크기 원형 프로그레스 (r=45) */
+.circular-progress.medium .circular-progress-circle {
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+}
+
+/* 큰 원형 프로그레스 (r=72) */
+.circular-progress.large .circular-progress-circle {
+  stroke-dasharray: 452;
+  stroke-dashoffset: 452;
+}
+
+.circular-progress-circle.success {
+  stroke: var(--color-success);
+}
+
+.circular-progress-circle.warning {
+  stroke: var(--color-warning);
+}
+
+.circular-progress-circle.danger {
+  stroke: var(--color-danger);
+}
+
+.circular-progress-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.circular-progress-value {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  background: var(--color-primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.circular-progress-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* 큰 원형 프로그레스 (홈 페이지용) */
+.circular-progress.large {
+  width: 160px;
+  height: 160px;
+}
+
+.circular-progress.large svg {
+  viewBox: "0 0 160 160";
+}
+
+.circular-progress.large .circular-progress-circle-bg,
+.circular-progress.large .circular-progress-circle {
+  stroke-width: 10;
+}
+
+.circular-progress.large .circular-progress-value {
+  font-size: var(--font-size-3xl);
+}
+
+.circular-progress.large .circular-progress-label {
+  font-size: var(--font-size-sm);
+}
+
+/* 중간 원형 프로그레스 */
+.circular-progress.medium {
+  width: 100px;
+  height: 100px;
+}
+
+.circular-progress.medium svg {
+  viewBox: "0 0 100 100";
+}
+
+.circular-progress.medium .circular-progress-circle-bg,
+.circular-progress.medium .circular-progress-circle {
+  stroke-width: 6;
+}
+
+.circular-progress.medium .circular-progress-value {
+  font-size: var(--font-size-xl);
+}
+
+/* 프로그레스 카드 */
+.progress-card {
+  background: var(--color-bg-glass);
+  backdrop-filter: var(--blur-lg);
+  -webkit-backdrop-filter: var(--blur-lg);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-base);
+}
+
+.progress-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.progress-card-title {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+}
+
+.progress-card-subtitle {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-top: -8px;
+}
+
+/* 막대형 프로그레스 개선 */
+.progress-bar-container {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  height: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--color-primary-gradient);
+  border-radius: var(--radius-full);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 149, 0, 0.3);
+}
+
+.progress-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progress-bar-fill.success {
+  background: linear-gradient(90deg, var(--color-success) 0%, #1ea87a 100%);
+}
+
+.progress-bar-fill.warning {
+  background: linear-gradient(90deg, var(--color-warning) 0%, #e6a500 100%);
+}
+
+.progress-bar-fill.danger {
+  background: linear-gradient(90deg, var(--color-danger) 0%, #d63a48 100%);
+}
+
+/* 프로그레스 정보 */
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.progress-info-label {
+  font-weight: var(--font-weight-medium);
+}
+
+.progress-info-value {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+/* 다중 프로그레스 (영양소용) */
+.macro-progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.macro-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.macro-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-sm);
+}
+
+.macro-name {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.macro-value {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+.macro-progress-bar {
+  height: 8px;
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.macro-progress-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.macro-progress-fill.protein {
+  background: linear-gradient(90deg, #FF6B6B 0%, #EE5A6F 100%);
+}
+
+.macro-progress-fill.carbs {
+  background: linear-gradient(90deg, #4ECDC4 0%, #44A08D 100%);
+}
+
+.macro-progress-fill.fat {
+  background: linear-gradient(90deg, #FFE66D 0%, #FFD93D 100%);
+}
+
+/* 모바일 반응형 - 프로그레스 */
+@media (max-width: 768px) {
+  .circular-progress {
+    width: 100px;
+    height: 100px;
+  }
+
+  .circular-progress svg {
+    viewBox: "0 0 100 100";
+  }
+
+  .circular-progress.large {
+    width: 120px;
+    height: 120px;
+  }
+
+  .circular-progress.large svg {
+    viewBox: "0 0 120 120";
+  }
+
+  .circular-progress.medium {
+    width: 80px;
+    height: 80px;
+  }
+
+  .circular-progress.medium svg {
+    viewBox: "0 0 80 80";
+  }
+
+  .circular-progress-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .circular-progress-value {
+    font-size: var(--font-size-xl);
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .circular-progress.large .circular-progress-value {
+    font-size: var(--font-size-2xl);
+  }
+
+  .circular-progress-label {
+    font-size: 10px;
+  }
+
+  .progress-card {
+    padding: var(--spacing-md);
+  }
+
+  .progress-card-title {
+    font-size: var(--font-size-xs);
+  }
+
+  .progress-card-subtitle {
+    font-size: 10px;
+  }
+
+  .progress-bar-container {
+    height: 10px;
+  }
+
+  .macro-progress {
+    gap: var(--spacing-sm);
+  }
+
+  .macro-header {
+    font-size: var(--font-size-xs);
+  }
+}
+

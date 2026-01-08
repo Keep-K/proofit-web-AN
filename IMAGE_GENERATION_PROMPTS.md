@@ -143,3 +143,4 @@ ImageMagick 또는 다른 이미지 편집 도구를 사용하여 리사이즈:
 convert input.jpg -resize 1200x630 output.jpg
 ```
 
+

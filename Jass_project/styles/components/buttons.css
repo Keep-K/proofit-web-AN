@@ -1,0 +1,191 @@
+/* ============================================
+   버튼 컴포넌트 - LayerEdge 스타일
+   ============================================ */
+
+/* 기본 버튼 스타일 */
+button {
+  padding: 12px 24px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-glass);
+  backdrop-filter: var(--blur-md);
+  -webkit-backdrop-filter: var(--blur-md);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-strong);
+  background: var(--color-bg-glass-strong);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Primary 버튼 - LayerEdge 그라데이션 */
+button.btn-primary,
+button.primary,
+.btn-primary {
+  background: var(--color-primary-gradient);
+  color: white;
+  border: none;
+  box-shadow: var(--shadow-glow);
+}
+
+button.btn-primary:hover,
+button.primary:hover,
+.btn-primary:hover {
+  background: linear-gradient(135deg, #E6850E 0%, #FF9500 50%, #FFB84D 100%);
+  box-shadow: var(--shadow-glow-strong);
+  transform: translateY(-2px);
+}
+
+/* Secondary 버튼 */
+button.btn-secondary,
+button.secondary,
+.btn-secondary {
+  background: var(--color-bg-glass);
+  backdrop-filter: var(--blur-md);
+  -webkit-backdrop-filter: var(--blur-md);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+button.btn-secondary:hover,
+button.secondary:hover,
+.btn-secondary:hover {
+  background: var(--color-bg-glass-strong);
+  border-color: var(--color-primary);
+  color: var(--color-text-primary);
+}
+
+/* Danger 버튼 */
+button.btn-danger,
+button.danger,
+.btn-danger {
+  background: var(--color-danger);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+button.btn-danger:hover,
+button.danger:hover,
+.btn-danger:hover {
+  background: #dc2626;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* 지갑 버튼 스타일 */
+.wallet-button {
+  background: var(--color-primary-gradient);
+  color: white;
+  padding: 10px 20px;
+  border-radius: var(--radius-lg);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: var(--shadow-glow);
+  border: none;
+}
+
+.wallet-button:hover {
+  background: linear-gradient(135deg, #E6850E 0%, #FF9500 50%, #FFB84D 100%);
+  box-shadow: var(--shadow-glow-strong);
+}
+
+.wallet-button.connected {
+  background: var(--color-success);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.wallet-button.connected:hover {
+  background: #059669;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+/* 업로드 버튼 */
+.btn-upload {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  background: var(--color-success);
+  color: white;
+  font-weight: var(--font-weight-semibold);
+  border: none;
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.25);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  user-select: none;
+}
+
+.btn-upload:hover {
+  background: #059669;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.32);
+  transform: translateY(-1px);
+}
+
+.btn-upload:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.25);
+}
+
+/* 모바일 반응형 - 버튼 */
+@media (max-width: 768px) {
+  button {
+    padding: 10px 20px;
+    font-size: var(--font-size-sm);
+  }
+
+  button.btn-primary,
+  button.primary,
+  .btn-primary {
+    padding: 12px 24px;
+  }
+
+  .wallet-button {
+    padding: 8px 16px;
+    font-size: var(--font-size-sm);
+  }
+
+  .btn-upload {
+    padding: 8px 18px;
+    font-size: var(--font-size-sm);
+  }
+}

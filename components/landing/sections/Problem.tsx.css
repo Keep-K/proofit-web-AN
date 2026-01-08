@@ -1,0 +1,73 @@
+/* 
+  Problem 섹션의 "Insert your data" 및 "YOURSELF" div CSS
+  실제 적용되는 CSS 규칙
+*/
+
+/* 기본 스타일 */
+.problem-data-card {
+  /* Border & Radius */
+  border-radius: 0.75rem; /* rounded-xl = 12px */
+  border: 1px solid rgb(230 228 220); /* border border-border = #E6E4DC */
+  
+  /* Background Gradient */
+  background: linear-gradient(
+    to bottom right,
+    rgb(255 149 0 / 0.1),   /* from-accent/10 = #FF9500 with 10% opacity */
+    rgb(255 184 77 / 0.1)   /* to-accent-2/10 = #FFB84D with 10% opacity */
+  );
+  
+  /* Padding */
+  padding: 1.5rem; /* p-6 = 24px */
+  
+  /* Flexbox */
+  display: flex;
+  align-items: center; /* items-center */
+  justify-content: center; /* justify-center */
+  
+  /* Size */
+  min-height: 100px; /* min-h-[200px] */
+  width: 100%; /* w-full (부모 기준) */
+  
+  /* Transitions */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* transition-all */
+}
+
+/* Hover 상태 */
+.problem-data-card:hover {
+  /* Background Gradient 변경 */
+  background: linear-gradient(
+    to bottom right,
+    rgb(255 149 0 / 0.15),  /* hover:from-accent/15 = #FF9500 with 15% opacity */
+    rgb(255 184 77 / 0.15)  /* hover:to-accent-2/15 = #FFB84D with 15% opacity */
+  );
+  
+  /* Border 색상 변경 */
+  border-color: rgb(255 149 0 / 0.3); /* hover:border-accent/30 = #FF9500 with 30% opacity */
+}
+
+/* 내부 텍스트 스타일 */
+.problem-data-card-text {
+  font-size: 1rem; /* text-base = 16px */
+  font-weight: 600; /* font-semibold */
+  color: rgb(22 22 22); /* text-text = #161616 */
+}
+
+.problem-data-card-text.uppercase {
+  text-transform: uppercase; /* uppercase */
+}
+
+/* 부모 컨테이너 */
+.problem-data-container {
+  display: flex;
+  flex-direction: column; /* flex-col */
+  gap: 1rem; /* gap-4 = 16px */
+  width: 100%; /* w-full */
+}
+
+/* 최상위 컨테이너 */
+.problem-data-wrapper {
+  border-radius: 1rem; /* rounded-2xl = 16px */
+  border: 1px solid rgb(230 228 220); /* border border-border */
+  background-color: rgb(255 255 255 / 0.6); /* bg-surface/60 = white with 60% opacity */
+  padding: 1.5rem; /* p-6 = 24px */
+}

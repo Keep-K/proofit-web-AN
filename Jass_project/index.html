@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <title>Proofit Demo</title>
+    <link rel="stylesheet" href="./styles/main.css">
+  </head>
+  <body>
+    <!-- ============================================
+         헤더 영역
+         스타일: styles/layout/header.css
+         ============================================ -->
+    <header class="app-header">
+      <div class="header-content">
+        <div class="header-logo">
+          <h2>Proofit Demo</h2>
+        </div>
+        <div class="header-actions">
+          <button id="btnWallet" class="wallet-button">Connect Wallet</button>
+          <span id="walletStatus" class="wallet-status muted"></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================================
+         네비게이션 영역
+         스타일: styles/components/navigation.css
+         ============================================ -->
+    <nav class="app-navigation">
+      <div class="nav-buttons">
+        <button id="btnHome" class="nav-btn active">Home</button>
+        <button id="btnChat" class="nav-btn">Chat</button>
+        <button id="btnStats" class="nav-btn">Stats</button>
+        <button id="btnBodyTracker" class="nav-btn">Body</button>
+        <button id="btnNutrition" class="nav-btn">Nutrition</button>
+        <button id="btnMypage" class="nav-btn">Mypage</button>
+        <button id="btnPlanner" class="nav-btn">Planner</button>
+      </div>
+    </nav>
+
+    <!-- ============================================
+         로딩 오버레이
+         ============================================ -->
+    <div id="walletLoadingOverlay" class="loading-overlay" style="display: none;">
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+        <p class="loading-text">Connecting wallet...</p>
+      </div>
+    </div>
+
+    <!-- ============================================
+         페이지 컨테이너
+         ============================================ -->
+    <main class="app-main">
+      <!-- 홈 페이지 -->
+      <div id="page-home" class="page active">
+        <div id="home-not-connected" class="home-hero home-hero--disconnected">
+          <div class="home-hero-inner">
+            <div class="home-hero-kicker">Proofit</div>
+            <h1 class="home-hero-title">Plan, track, and grow your fitness journey.</h1>
+            <p class="home-hero-subtitle">Connect your MetaMask wallet to use the service.</p>
+            <div class="home-hero-actions">
+              <button class="btn-primary" type="button" onclick="document.getElementById('btnWallet')?.click()">Connect Wallet</button>
+              <button class="btn-secondary" type="button" onclick="document.getElementById('btnPlanner')?.click()">View Planner</button>
+              <button class="btn-secondary" type="button" onclick="document.getElementById('btnChat')?.click()">AI Coach</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="home-connected" class="home-dashboard" style="display: none;">
+          <div class="home-hero home-hero--connected">
+            <div class="home-hero-inner">
+              <div class="home-hero-kicker">Dashboard</div>
+              <h1 class="home-hero-title">Your weekly workout at a glance.</h1>
+              <p class="home-hero-subtitle">Key metrics summarized from your planner and log data.</p>
+              <div class="home-hero-actions">
+                <button class="btn-primary" type="button" onclick="document.getElementById('btnPlanner')?.click()">Open Planner</button>
+                <button class="btn-secondary" type="button" onclick="document.getElementById('btnStats')?.click()">View Stats</button>
+                <button class="btn-secondary" type="button" onclick="document.getElementById('btnNutrition')?.click()">Nutrition</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="home-dashboard-grid">
+            <!-- 목표 달성률 원형 프로그레스 -->
+            <div class="progress-card home-weekly-progress">
+              <div class="progress-card-title">Weekly Goal Progress</div>
+              <div class="circular-progress large" id="weeklyGoalProgress">
+                <svg viewBox="0 0 160 160" preserveAspectRatio="xMidYMid meet">
+                  <circle class="circular-progress-circle-bg" cx="80" cy="80" r="72"></circle>
+                  <circle class="circular-progress-circle" cx="80" cy="80" r="72" id="weeklyGoalCircle"></circle>
+                </svg>
+                <div class="circular-progress-content">
+                  <div class="circular-progress-value" id="weeklyGoalValue">0%</div>
+                  <div class="circular-progress-label">Goal Achieved</div>
+                </div>
+              </div>
+              <div class="progress-card-subtitle" id="weeklyGoalSubtitle">Set your weekly workout goal</div>
+            </div>
+
+            <div class="stats-grid home-stats-grid">
+            <div class="stat-card">
+              <div class="stat-label">This Week's Workouts</div>
+              <div class="stat-value" id="statChatCount">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Scheduled</div>
+              <div class="stat-value" id="statPlannerCount">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Completed</div>
+              <div class="stat-value" id="statCompletedCount">0</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 오늘 체크리스트 -->
+          <div class="home-today">
+            <div class="home-today-header">
+              <h3 class="home-today-title">Today's Checklist</h3>
+              <div class="muted" id="todayDateLabel"></div>
+            </div>
+
+            <div class="home-today-list">
+              <div class="home-today-row">
+                <div class="home-today-left">
+                  <div class="home-today-label">Today's Schedule</div>
+                  <div class="home-today-sub muted" id="todayPlannerSub">0 items</div>
+                </div>
+                <div class="home-today-right">
+                  <button id="btnTodayOpenPlanner" class="btn-secondary" type="button">Planner</button>
+                </div>
+              </div>
+
+              <div class="home-today-row">
+                <div class="home-today-left">
+                  <div class="home-today-label">Workout Log</div>
+                  <div class="home-today-sub muted" id="todayWorkoutLogSub">No records</div>
+                </div>
+                <div class="home-today-right">
+                  <button id="btnTodayOpenWorkoutLog" class="btn-secondary" type="button">Log</button>
+                </div>
+              </div>
+
+              <div class="home-today-row">
+                <div class="home-today-left">
+                  <div class="home-today-label">Calories</div>
+                  <div class="home-today-sub muted" id="todayCaloriesSub">0 / 2000 kcal</div>
+                </div>
+                <div class="home-today-right">
+                  <button id="btnTodayOpenNutrition" class="btn-secondary" type="button">Nutrition</button>
+                </div>
+              </div>
+
+              <div class="home-today-row">
+                <div class="home-today-left">
+                  <div class="home-today-label">Weight Record</div>
+                  <div class="home-today-sub muted" id="todayBodySub">Not recorded</div>
+                </div>
+                <div class="home-today-right">
+                  <button id="btnTodayOpenBody" class="btn-secondary" type="button">Body</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 채팅 페이지 -->
+      <div id="page-chat" class="page">
+        <div class="chat-container">
+          <div id="chatMessages" class="chat-messages"></div>
+          <div id="suggestions" class="suggestions"></div>
+          <div class="chat-input-container">
+            <div class="chat-input-wrapper">
+              <input type="text" id="chatInput" class="chat-input" placeholder="Enter your message..." />
+              <button id="btnSend" class="btn-primary" title="Send">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 통계 페이지 -->
+      <div id="page-stats" class="page">
+        <div id="statsContainer" class="page-content">
+          <h2>Stats</h2>
+          
+          <!-- 통계 카드 그리드 -->
+          <div class="stats-grid" style="margin-bottom: var(--spacing-xl);">
+            <div class="progress-card">
+              <div class="progress-card-title">Total Workouts</div>
+              <div class="circular-progress medium" id="totalWorkoutsProgress">
+                <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                  <circle class="circular-progress-circle-bg" cx="50" cy="50" r="45"></circle>
+                  <circle class="circular-progress-circle success" cx="50" cy="50" r="45" id="totalWorkoutsCircle"></circle>
+                </svg>
+                <div class="circular-progress-content">
+                  <div class="circular-progress-value" id="statTotalWorkouts">0</div>
+                  <div class="circular-progress-label">times</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="progress-card">
+              <div class="progress-card-title">Completion Rate</div>
+              <div class="circular-progress medium" id="completionRateProgress">
+                <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                  <circle class="circular-progress-circle-bg" cx="50" cy="50" r="45"></circle>
+                  <circle class="circular-progress-circle" cx="50" cy="50" r="45" id="completionRateCircle"></circle>
+                </svg>
+                <div class="circular-progress-content">
+                  <div class="circular-progress-value" id="statCompletionRate">0%</div>
+                  <div class="circular-progress-label">Complete</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="progress-card">
+              <div class="progress-card-title">Monthly Workouts</div>
+              <div class="circular-progress medium" id="monthlyWorkoutsProgress">
+                <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                  <circle class="circular-progress-circle-bg" cx="50" cy="50" r="45"></circle>
+                  <circle class="circular-progress-circle" cx="50" cy="50" r="45" id="monthlyWorkoutsCircle"></circle>
+                </svg>
+                <div class="circular-progress-content">
+                  <div class="circular-progress-value" id="statMonthlyWorkouts">0</div>
+                  <div class="circular-progress-label">times</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="charts-section">
+            <div class="charts-grid">
+              <section class="chart-panel">
+                <div class="chart-header">
+                  <h3>Weekly Workout Frequency</h3>
+                  <span class="muted">By day</span>
+                </div>
+                <canvas id="weeklyChart"></canvas>
+              </section>
+
+              <section class="chart-panel">
+                <div class="chart-header">
+                  <h3>Monthly Workout Frequency</h3>
+                  <span class="muted">By week</span>
+                </div>
+                <canvas id="monthlyChart"></canvas>
+              </section>
+
+              <section class="chart-panel">
+                <div class="chart-header">
+                  <h3>Planner Completion Status</h3>
+                  <span class="muted">Done/Scheduled/Skipped</span>
+                </div>
+                <div class="pie-layout">
+                  <canvas id="completionChart"></canvas>
+                  <div id="completionLegend" class="chart-legend"></div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 바디 트래커 페이지 -->
+      <div id="page-body-tracker" class="page">
+        <div id="bodyTrackerContainer" class="page-content">
+          <h2>Body Tracker</h2>
+          <form id="weightForm" class="form">
+            <div class="form-group">
+              <label>Weight (kg)</label>
+              <input type="number" id="weightInput" step="0.1" required />
+            </div>
+            <div class="form-group">
+              <label>Body Fat (%)</label>
+              <input type="number" id="bodyFatInput" step="0.1" />
+            </div>
+            <div class="form-group">
+              <label>Muscle Mass (kg)</label>
+              <input type="number" id="muscleInput" step="0.1" />
+            </div>
+            <button type="submit" class="btn-primary">Record</button>
+          </form>
+          <canvas id="weightChart" width="400" height="200"></canvas>
+          <div id="weightList"></div>
+          <div class="photo-section">
+            <h3>Photo Upload</h3>
+            <div class="file-upload-row">
+              <input type="file" id="photoInput" class="file-input-hidden" accept="image/*" />
+              <label for="photoInput" class="btn-upload file-upload-btn">Upload</label>
+              <span id="photoFileName" class="muted file-upload-filename">No file selected</span>
+            </div>
+            <div id="photoGallery" class="photo-gallery"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 영양 페이지 -->
+      <div id="page-nutrition" class="page">
+        <div id="nutritionContainer" class="page-content">
+          <h2>Nutrition</h2>
+          <div class="calorie-section">
+            <!-- 칼로리 원형 프로그레스 -->
+            <div class="progress-card" style="margin-bottom: var(--spacing-lg);">
+              <div class="progress-card-title">Today's Calories</div>
+              <div class="circular-progress large" id="calorieCircularProgress">
+                <svg viewBox="0 0 160 160" preserveAspectRatio="xMidYMid meet">
+                  <circle class="circular-progress-circle-bg" cx="80" cy="80" r="72"></circle>
+                  <circle class="circular-progress-circle" cx="80" cy="80" r="72" id="calorieCircle"></circle>
+                </svg>
+                <div class="circular-progress-content">
+                  <div class="circular-progress-value" id="calorieCircularValue">0</div>
+                  <div class="circular-progress-label">kcal</div>
+                </div>
+              </div>
+              <div class="progress-info" style="width: 100%; margin-top: var(--spacing-md);">
+                <div>
+                  <div class="progress-info-label">Consumed</div>
+                  <div class="progress-info-value" id="caloriesConsumed">0</div>
+                </div>
+                <div>
+                  <div class="progress-info-label">Target</div>
+                  <div class="progress-info-value" id="caloriesTarget">2000</div>
+                </div>
+                <div>
+                  <div class="progress-info-label">Remaining</div>
+                  <div class="progress-info-value" id="caloriesRemaining">2000</div>
+                </div>
+              </div>
+
+              <!-- 일일 칼로리 목표: 원그래프 아래로 이동 -->
+              <form id="calorieGoalForm" class="form" style="margin-top: var(--spacing-lg); width: 100%;">
+                <div class="form-group">
+                  <label>Daily Calorie Goal</label>
+                  <div class="inline-form-row">
+                    <input type="number" id="calorieGoalInput" required />
+                    <button type="submit" class="btn-secondary">Set Goal</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- 영양소 프로그레스 -->
+            <div class="macro-progress">
+              <div class="macro-item">
+                <div class="macro-header">
+                  <span class="macro-name">Protein</span>
+                  <span class="macro-value" id="totalProtein">0g</span>
+                </div>
+                <div class="macro-progress-bar">
+                  <div class="macro-progress-fill protein" id="proteinProgress" style="width: 0%"></div>
+                </div>
+              </div>
+              <div class="macro-item">
+                <div class="macro-header">
+                  <span class="macro-name">Carbs</span>
+                  <span class="macro-value" id="totalCarbs">0g</span>
+                </div>
+                <div class="macro-progress-bar">
+                  <div class="macro-progress-fill carbs" id="carbsProgress" style="width: 0%"></div>
+                </div>
+              </div>
+              <div class="macro-item">
+                <div class="macro-header">
+                  <span class="macro-name">Fat</span>
+                  <span class="macro-value" id="totalFat">0g</span>
+                </div>
+                <div class="macro-progress-bar">
+                  <div class="macro-progress-fill fat" id="fatProgress" style="width: 0%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <form id="nutritionForm" class="form">
+            <div class="form-group">
+              <label>Food Name</label>
+              <input type="text" id="foodName" required />
+            </div>
+            <div class="form-group">
+              <label>Calories (kcal)</label>
+              <input type="number" id="foodCalories" required />
+            </div>
+            <div class="form-group">
+              <label>Protein (g)</label>
+              <input type="number" id="foodProtein" step="0.1" />
+            </div>
+            <div class="form-group">
+              <label>Carbs (g)</label>
+              <input type="number" id="foodCarbs" step="0.1" />
+            </div>
+            <div class="form-group">
+              <label>Fat (g)</label>
+              <input type="number" id="foodFat" step="0.1" />
+            </div>
+            <button type="submit" class="btn-primary">Add</button>
+          </form>
+          <div id="nutritionList"></div>
+        </div>
+      </div>
+
+      <!-- 운동 로그 페이지 -->
+      <div id="page-workout-log" class="page">
+        <div class="page-content">
+          <h2>Workout Log</h2>
+          <button id="btnLoadWorkoutLogs" class="btn-secondary">Load</button>
+          <form id="workoutLogForm" class="form">
+            <div class="form-group">
+              <label>Date</label>
+              <input type="date" id="workoutLogDate" required />
+            </div>
+            <div class="form-group">
+              <label>Exercise Name</label>
+              <input type="text" id="exerciseName" required />
+            </div>
+            <div id="setsContainer">
+              <div class="set-input">
+                <input type="number" class="set-weight" placeholder="Weight (kg)" />
+                <input type="number" class="set-reps" placeholder="Reps" required />
+              </div>
+            </div>
+            <button type="button" class="btn-secondary" onclick="addSet()">Add Set</button>
+            <button type="submit" class="btn-primary">Record</button>
+          </form>
+          <div id="workoutLogList"></div>
+        </div>
+      </div>
+
+      <!-- 마이페이지 -->
+      <div id="page-mypage" class="page">
+        <div class="page-content">
+          <h2>My Page</h2>
+          <button id="btnLoadProfile" class="btn-secondary">Load Profile</button>
+          <button id="btnLoadSummary" class="btn-secondary">Load Summary</button>
+          <div id="profileInfo"></div>
+          <form id="profileForm" class="form">
+            <div class="form-group">
+              <label>Display Name</label>
+              <input type="text" id="displayName" />
+            </div>
+            <div class="form-group">
+              <label>Timezone</label>
+              <input type="text" id="timezone" value="Asia/Seoul" />
+            </div>
+            <div class="form-group">
+              <label>Bio</label>
+              <textarea id="bio"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Height (cm)</label>
+              <input type="number" id="heightCm" />
+            </div>
+            <div class="form-group">
+              <label>Weight (kg)</label>
+              <input type="number" id="weightKg" step="0.1" />
+            </div>
+            <button type="submit" class="btn-primary">Update</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- 플래너 페이지 -->
+      <div id="page-planner" class="page">
+        <div class="page-content">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
+            <h2 style="margin: 0;">Planner</h2>
+            <div style="display: flex; gap: var(--spacing-sm);">
+          <button id="btnLoadPlanner" class="btn-secondary">Load</button>
+          <button id="btnRefreshPlanner" class="btn-secondary">Refresh</button>
+            </div>
+          </div>
+          
+          <!-- 완료율 원형 프로그레스 -->
+          <div class="progress-card" style="margin-bottom: var(--spacing-lg);">
+            <div class="progress-card-title">Schedule Completion Rate</div>
+            <div class="circular-progress medium" id="plannerCompletionProgress">
+              <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                <circle class="circular-progress-circle-bg" cx="50" cy="50" r="45"></circle>
+                <circle class="circular-progress-circle" cx="50" cy="50" r="45" id="plannerCompletionCircle"></circle>
+              </svg>
+              <div class="circular-progress-content">
+                <div class="circular-progress-value" id="plannerCompletionValue">0%</div>
+                <div class="circular-progress-label">Complete</div>
+              </div>
+            </div>
+            <div class="progress-card-subtitle" id="plannerCompletionSubtitle">No schedules</div>
+          </div>
+          
+          <div class="calendar-section">
+            <div class="calendar-header">
+              <div class="calendar-nav">
+              <button id="btnPrevMonth" class="btn-secondary">◀</button>
+              <div id="calendarMonthYear"></div>
+              <button id="btnNextMonth" class="btn-secondary">▶</button>
+            </div>
+              <button id="btnToday" class="btn-secondary">Today</button>
+            </div>
+            <div id="selectedDateHeader" class="selected-date-header"></div>
+            <div id="calendar"></div>
+            <div id="dateItemsList" class="date-items-list"></div>
+          </div>
+          <div class="card" style="margin-top: var(--spacing-lg);">
+            <h3 style="margin-top: 0; margin-bottom: var(--spacing-md);">Add New Schedule</h3>
+          <form id="plannerForm" class="form">
+            <div class="form-group">
+              <label>Title</label>
+              <input type="text" id="plannerTitle" required />
+            </div>
+            <div class="form-group">
+              <label>Start Time</label>
+              <input type="datetime-local" id="plannerStartAt" required />
+            </div>
+            <div class="form-group">
+              <label>End Time</label>
+              <input type="datetime-local" id="plannerEndAt" />
+            </div>
+            <button type="submit" class="btn-primary">Add</button>
+          </form>
+          </div>
+          <div id="plannerItems" style="margin-top: var(--spacing-lg);"></div>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

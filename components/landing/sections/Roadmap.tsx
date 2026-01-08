@@ -14,7 +14,7 @@ export function Roadmap() {
           <div className="rounded-2xl border border-border bg-surface/60 p-6">
             <ol className="relative space-y-6 border-l border-border pl-6">
               {LANDING_COPY.roadmap.phases.map((p) => (
-                <li key={p.title} className="relative">
+                <li key={p.title} className="relative pl-2">
                   <span
                     aria-hidden="true"
                     className="absolute -left-[9px] top-1 h-4 w-4 rounded-full border border-border bg-surface"

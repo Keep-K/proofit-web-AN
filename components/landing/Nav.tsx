@@ -42,7 +42,7 @@ export function Nav() {
           aria-label="PROOFIT Home"
         >
           <Image
-            src="/logo.png"
+            src="/images/handmade/Logo1.png"
             alt="PROOFIT"
             width={36}
             height={36}
